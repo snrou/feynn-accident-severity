@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accident Severity Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter Accident Details</h2>
+    
+    <form method="POST">
+        <label>Age Band of Driver:</label>
+        <select name="Age_band_of_driver">
+            <option>18-30</option>
+            <option>31-50</option>
+            <option>Under 18</option>
+            <option>Over 51</option>
+            <option>Unknown</option>
+        </select>
+
+        <label>Sex of Driver:</label>
+        <select name="Sex_of_driver">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Unknown</option>
+        </select>
+
+        <label>Educational Level:</label>
+        <select name="Educational_level">
+            <option>Above high school</option>
+            <option>Junior high school</option>
+            <option>Unknown</option>
+            <option>Elementary school</option>
+            <option>High school</option>
+            <option>Illiterate</option>
+            <option>Writing & reading</option>
+        </select>
+
+        <label>Vehicle Driver Relation:</label>
+        <select name="Vehicle_driver_relation">
+            <option>Employee</option>
+            <option>Unknown</option>
+            <option>Owner</option>
+            <option>Other</option>
+        </select>
+
+        <label>Driving Experience:</label>
+        <select name="Driving_experience">
+            <option>1-2yr</option>
+            <option>Above 10yr</option>
+            <option>5-10yr</option>
+            <option>2-5yr</option>
+            <option>Unknown</option>
+            <option>No Licence</option>
+            <option>Below 1yr</option>
+        </select>
+
+        <label>Lanes or Medians:</label>
+        <select name="Lanes_or_Medians">
+            <option>Unknown</option>
+            <option>Undivided Two way</option>
+            <option>Other</option>
+            <option>Double carriageway (median)</option>
+            <option>One way</option>
+            <option>Two-way (divided with solid lines road marking)</option>
+            <option>Two-way (divided with broken lines road marking)</option>
+        </select>
+
+        <label>Types of Junction:</label>
+        <select name="Types_of_Junction">
+            <option>No junction</option>
+            <option>Y Shape</option>
+            <option>Crossing</option>
+            <option>O Shape</option>
+            <option>Other</option>
+            <option>Unknown</option>
+            <option>T Shape</option>
+            <option>X Shape</option>
+        </select>
+
+        <label>Road Surface Type:</label>
+        <select name="Road_surface_type">
+            <option>Asphalt roads</option>
+            <option>Earth roads</option>
+            <option>Unknown</option>
+            <option>Asphalt roads with some distress</option>
+            <option>Gravel roads</option>
+            <option>Other</option>
+        </select>
+
+        <label>Light Conditions:</label>
+        <select name="Light_conditions">
+            <option>Daylight</option>
+            <option>Darkness - lights lit</option>
+            <option>Darkness - no lighting</option>
+            <option>Darkness - lights unlit</option>
+        </select>
+
+        <label>Weather Conditions:</label>
+        <select name="Weather_conditions">
+            <option>Normal</option>
+            <option>Raining</option>
+            <option>Raining and Windy</option>
+            <option>Cloudy</option>
+            <option>Other</option>
+            <option>Windy</option>
+            <option>Snow</option>
+            <option>Unknown</option>
+            <option>Fog or mist</option>
+        </select>
+
+        <label>Type of Collision:</label>
+        <select name="Type_of_collision">
+            <option>Vehicle with vehicle collision</option>
+            <option>Collision with pedestrians</option>
+            <option>Collision with roadside objects</option>
+            <option>Collision with animals</option>
+            <option>Other</option>
+            <option>Rollover</option>
+            <option>Fall from vehicles</option>
+            <option>Unknown</option>
+        </select>
+
+        <label>Vehicle Movement:</label>
+        <select name="Vehicle_movement">
+            <option>Going straight</option>
+            <option>U-Turn</option>
+            <option>Moving Backward</option>
+            <option>Turnover</option>
+            <option>Waiting to go</option>
+            <option>Reversing</option>
+            <option>Unknown</option>
+            <option>Parked</option>
+            <option>Stopping</option>
+            <option>Overtaking</option>
+            <option>Other</option>
+        </select>
+
+        <label>Pedestrian Movement:</label>
+        <select name="Pedestrian_movement">
+            <option>Not a Pedestrian</option>
+            <option>Crossing from driver's nearside</option>
+            <option>Crossing from nearside - masked by parked or stationary vehicle</option>
+            <option>Unknown or other</option>
+            <option>Crossing from offside - masked by parked or stationary vehicle</option>
+            <option>In carriageway, stationary - not crossing (standing or playing)</option>
+            <option>Walking along in carriageway, back to traffic</option>
+            <option>Walking along in carriageway, facing traffic</option>
+        </select>
+
+        <label>Cause of Accident:</label>
+        <select name="Cause_of_accident">
+            <option>Overtaking</option>
+            <option>Changing lane to the left</option>
+            <option>Changing lane to the right</option>
+            <option>Other</option>
+            <option>No priority to vehicle</option>
+            <option>No priority to pedestrian</option>
+            <option>No distancing</option>
+            <option>Improper parking</option>
+            <option>Overspeed</option>
+            <option>Driving carelessly</option>
+            <option>Driving at high speed</option>
+            <option>Unknown</option>
+        </select>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction is not none %}
+        <h3>Predicted Accident Severity: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
